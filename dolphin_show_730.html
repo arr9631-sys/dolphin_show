@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dolphin Show Countdown 7:30</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background: #f0f8ff; }
+    h1 { color: #006994; }
+    #countdown { font-size: 2em; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>🐬 Dolphin Show Countdown (7:30 PM)</h1>
+  <p id="countdown"></p>
+  <audio id="alertSound">
+    <source src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" type="audio/ogg">
+  </audio>
+
+  <script>
+    var countDownDate = new Date("Aug 19, 2025 19:30:00").getTime();
+    var x = setInterval(function() {
+      var now = new Date().getTime();
+      var distance = countDownDate - now;
+
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
+
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "The Show Starts Now! 🐬";
+        document.getElementById("alertSound").play();
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
